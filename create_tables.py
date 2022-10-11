@@ -8,6 +8,14 @@ def create_database():
     """
     - Creates and connects to the sparkifydb
     - Returns the connection and cursor to sparkifydb
+
+    Arguments:
+        None
+
+
+    Returns:
+        cur: the cursor object.
+        conn: connection to the database.
     """
     # get db config from yml file
     host, db, user, password = get_db_configs("db_config.yml")
@@ -36,6 +44,12 @@ def create_database():
 def drop_tables(cur, conn):
     """
     Drops each table using the queries in `drop_table_queries` list.
+    
+    Arguments:
+        cur: the cursor object.
+        conn: connection to the database.
+    Returns: 
+        None
     """
     for query in drop_table_queries:
         cur.execute(query)
@@ -45,6 +59,11 @@ def drop_tables(cur, conn):
 def create_tables(cur, conn):
     """
     Creates each table using the queries in `create_table_queries` list. 
+    Arguments:
+        cur: the cursor object.
+        conn: connection to the database.
+    Returns: 
+        None
     """
     for query in create_table_queries:
         cur.execute(query)
